@@ -17,74 +17,69 @@ class MyCartViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
       ),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 18,
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 18,
+          ),
+          Expanded(
+            child: Image.asset(
+              AppImages.cartImage,
             ),
-            Center(
-              child: Image.asset(
-                AppImages.cartImage,
+          ),
+          Column(
+            children: [
+              const OrderInfoItem(
+                label: 'Order Subtotal',
+                price: 42.97,
               ),
-            ),
-            SizedBox(
-              height: deviceHeight * 0.1,
-            ),
-            Column(
-              children: [
-                const OrderInfoItem(
-                  label: 'Order Subtotal',
-                  price: 42.97,
-                ),
-                const SizedBox(
-                  height: 3,
-                ),
-                const OrderInfoItem(
-                  label: 'Discount',
-                  price: 0,
-                ),
-                const SizedBox(
-                  height: 3,
-                ),
-                const OrderInfoItem(
-                  label: 'Shipping',
-                  price: 8,
-                ),
-                const SizedBox(
-                  height: 17,
-                ),
-                Container(
-                  width: deviceWidth / 1.2,
-                  decoration: const ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 1,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: Color(0xFFC6C6C6),
-                      ),
+              const SizedBox(
+                height: 3,
+              ),
+              const OrderInfoItem(
+                label: 'Discount',
+                price: 0,
+              ),
+              const SizedBox(
+                height: 3,
+              ),
+              const OrderInfoItem(
+                label: 'Shipping',
+                price: 8,
+              ),
+              const SizedBox(
+                height: 17,
+              ),
+              Container(
+                width: deviceWidth / 1.2,
+                decoration: const ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      width: 1,
+                      strokeAlign: BorderSide.strokeAlignCenter,
+                      color: Color(0xFFC6C6C6),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const TotalPriceWidget(
-                  price: 50.97,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const CustomElevatedButton(
-                  label: 'Complete Payment',
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-              ],
-            )
-          ],
-        ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const TotalPriceWidget(
+                price: 50.97,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const CustomElevatedButton(
+                label: 'Complete Payment',
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
