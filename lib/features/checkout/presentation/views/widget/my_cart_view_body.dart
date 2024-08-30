@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app/core/utils/app_images.dart';
-import 'package:payment_app/core/utils/app_styles.dart';
 import 'package:payment_app/features/checkout/presentation/views/payment_details_view.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/custom_elevated_button.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/order_info_item.dart';
