@@ -82,7 +82,7 @@ class MyCartViewBody extends StatelessWidget {
                 label: 'Complete Payment',
               ),
               const SizedBox(
-                height: 12,
+                height: 20,
               ),
             ],
           )
