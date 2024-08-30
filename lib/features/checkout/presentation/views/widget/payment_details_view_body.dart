@@ -6,13 +6,21 @@ import 'package:payment_app/features/checkout/presentation/views/widget/custom_e
 import 'package:payment_app/features/checkout/presentation/views/widget/payment_item.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/payment_methods_List_view.dart';
 
-class PaymentDetailsViewBody extends StatelessWidget {
+class PaymentDetailsViewBody extends StatefulWidget {
   const PaymentDetailsViewBody({
     super.key,
     required this.paymentMethodsIcon,
   });
 
   final List<String> paymentMethodsIcon;
+
+  @override
+  State<PaymentDetailsViewBody> createState() => _PaymentDetailsViewBodyState();
+}
+
+class _PaymentDetailsViewBodyState extends State<PaymentDetailsViewBody> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +32,33 @@ class PaymentDetailsViewBody extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(
-          child: PaymentMethodsListView(paymentMethodsIcon: paymentMethodsIcon),
+          child: PaymentMethodsListView(
+              paymentMethodsIcon: widget.paymentMethodsIcon),
         ),
-        const SliverToBoxAdapter(
-          child: CustomCreditCard(),
+        SliverToBoxAdapter(
+          child: CustomCreditCard(
+            formKey: formKey,
+            autovalidateMode: autovalidateMode,
+          ),
         ),
-        const SliverFillRemaining(
+        SliverFillRemaining(
           hasScrollBody: false,
           child: Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               bottom: 20,
             ),
             child: Align(
               alignment: Alignment.bottomCenter,
               child: CustomElevatedButton(
                 label: 'Pay',
+                onTap: () {
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
               ),
             ),
           ),
