@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/payment_item.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/payment_methods_List_view.dart';
 
@@ -17,7 +18,41 @@ class PaymentDetailsViewBody extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        PaymentMethodsListView(paymentMethodsIcon: paymentMethodsIcon)
+        PaymentMethodsListView(paymentMethodsIcon: paymentMethodsIcon),
+        CustomCreditCard(),
+      ],
+    );
+  }
+}
+
+class CustomCreditCard extends StatefulWidget {
+  const CustomCreditCard({super.key});
+
+  @override
+  State<CustomCreditCard> createState() => _CustomCreditCardState();
+}
+
+class _CustomCreditCardState extends State<CustomCreditCard> {
+  final String cardNumber = '',
+      expiryDate = '',
+      cardHolderNumber = '',
+      cvvCode = '';
+
+  bool showBackView = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // ignore: avoid_types_as_parameter_names
+        CreditCardWidget(
+          cardNumber: cardNumber,
+          expiryDate: expiryDate,
+          cardHolderName: cardHolderNumber,
+          cvvCode: cvvCode,
+          showBackView: showBackView,
+          onCreditCardWidgetChange: (value) {},
+        ),
       ],
     );
   }
