@@ -30,7 +30,7 @@ class PaymentItem extends StatelessWidget {
         shadows: [
           BoxShadow(
             color: isActive ? const Color(0xff34a853) : Colors.white,
-            blurRadius: 1,
+            blurRadius: 4,
             offset: const Offset(0, 0),
             spreadRadius: 0,
           )
@@ -39,6 +39,8 @@ class PaymentItem extends StatelessWidget {
       child: Center(
         child: SvgPicture.asset(
           iconPath,
+          // height: 24,
+          // fit: BoxFit.scaleDown,
         ),
       ),
     );

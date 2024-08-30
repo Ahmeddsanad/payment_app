@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/payment_item.dart';
+import 'package:payment_app/features/checkout/presentation/views/widget/payment_methods_List_view.dart';
 
 class PaymentDetailsViewBody extends StatelessWidget {
   const PaymentDetailsViewBody({
@@ -16,24 +17,7 @@ class PaymentDetailsViewBody extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        SizedBox(
-          height: 62,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return PaymentItem(
-                iconPath: paymentMethodsIcon[index],
-                isActive: false,
-              );
-            },
-            itemCount: paymentMethodsIcon.length,
-            separatorBuilder: (context, index) {
-              return const SizedBox(
-                width: 28,
-              );
-            },
-          ),
-        )
+        PaymentMethodsListView(paymentMethodsIcon: paymentMethodsIcon)
       ],
     );
   }
