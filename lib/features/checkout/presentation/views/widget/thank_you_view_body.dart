@@ -32,6 +32,26 @@ class ThankYouViewBody extends StatelessWidget {
                 ),
               ),
               Positioned(
+                bottom: DeviceHeight * 0.2 + 20,
+                left: 28, // 20 (circle avatar radius) + 8
+                right: 28, // 20 (circle avatar radius) + 8
+                child: Row(
+                  children: List.generate(
+                      30,
+                      (index) => Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 2),
+                              child: Container(
+                                color: const Color(0xFFB8B8B8),
+                                height: 2,
+                                width: 2,
+                              ),
+                            ),
+                          )),
+                ),
+              ),
+              Positioned(
                 bottom: DeviceHeight * 0.2,
                 left: -20,
                 child: CircleAvatar(
