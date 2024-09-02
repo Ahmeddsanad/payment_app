@@ -4,5 +4,7 @@ abstract class AppIcons {
   static const String creditCard = 'assets/icons/creditCard.svg';
   static const String applePay = 'assets/icons/applePay.svg';
   static const String check = 'assets/icons/check.svg';
+  static const String mastercard = 'assets/icons/mastercard.svg';
+  static const String scanCode = 'assets/icons/scanCode.svg';
   static const String check2 = 'assets/icons/check2.jpg';
 }

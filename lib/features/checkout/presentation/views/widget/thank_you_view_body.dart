@@ -18,8 +18,8 @@ class ThankYouViewBody extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(
-            left: 32.0,
-            right: 32.0,
+            left: 20.0,
+            right: 20.0,
             top: 90.0,
             bottom: 32.0,
           ),
