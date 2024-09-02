@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:payment_app/core/utils/app_icons.dart';
+import 'package:payment_app/features/checkout/presentation/views/widget/custom_arrow_back.dart';
+import 'package:payment_app/features/checkout/presentation/views/widget/custom_check_icon.dart';
+import 'package:payment_app/features/checkout/presentation/views/widget/dashed_line_row.dart';
+import 'package:payment_app/features/checkout/presentation/views/widget/thank_you_card_widget.dart';
 import 'package:svg_flutter/svg.dart';
 
 class ThankYouViewBody extends StatelessWidget {
@@ -21,47 +25,24 @@ class ThankYouViewBody extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              Container(
-                width: 350,
-                height: 672,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFD9D9D9),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
+              const ThankYouCard(),
               Positioned(
                 bottom: DeviceHeight * 0.2 + 20,
                 left: 28, // 20 (circle avatar radius) + 8
                 right: 28, // 20 (circle avatar radius) + 8
-                child: Row(
-                  children: List.generate(
-                      30,
-                      (index) => Expanded(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 2),
-                              child: Container(
-                                color: const Color(0xFFB8B8B8),
-                                height: 2,
-                                width: 2,
-                              ),
-                            ),
-                          )),
-                ),
+                child: const DashedLineRow(),
               ),
               Positioned(
                 bottom: DeviceHeight * 0.2,
                 left: -20,
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   backgroundColor: Colors.white,
                 ),
               ),
               Positioned(
                 bottom: DeviceHeight * 0.2,
                 right: -20,
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   backgroundColor: Colors.white,
                 ),
               ),
@@ -71,32 +52,13 @@ class ThankYouViewBody extends StatelessWidget {
         Positioned(
           height: DeviceHeight * 0.23,
           right: DeviceWidth * 0.359,
-          child: const CircleAvatar(
-            radius: 55,
-            backgroundColor: Color(0xFFD9D9D9),
-            child: CircleAvatar(
-              radius: 45,
-              backgroundImage: AssetImage(
-                AppIcons.check2,
-              ),
-            ),
-          ),
+          child: const CustomCheckIcon(),
         ),
         Positioned(
           height: DeviceHeight * 0.15,
           right: DeviceWidth * 0.8,
           left: 0,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Center(
-              child: SvgPicture.asset(
-                AppIcons.arrowBack,
-                // height: 20,
-              ),
-            ),
-          ),
+          child: const CustomArrowBack(),
         ),
       ],
     );
