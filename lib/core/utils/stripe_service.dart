@@ -27,8 +27,12 @@ class StripeService {
       ),
     );
   }
+
+  Future displayPaymentSheet() async {
+    Stripe.instance.presentPaymentSheet();
+  }
 }
 
-//paymentIntentObject create paymentIntent (amount - currency)
-//Init payment sheet (paymentIntentClientSecret)
-//presentPaymentSheet
+//1. paymentIntentObject create paymentIntent (amount - currency)
+//2. Init payment sheet (paymentIntentClientSecret)
+//3. presentPaymentSheet
