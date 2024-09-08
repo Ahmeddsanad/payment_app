@@ -18,9 +18,7 @@ class CheckoutApp extends StatelessWidget {
   }
 }
 
-//paymentIntentObject create paymentIntent (amount - currency)
-//Init payment sheet (paymentIntentClientSecret)
-//presentPaymentSheet
+
 
 
 // Future<void> initPaymentSheet() async {
