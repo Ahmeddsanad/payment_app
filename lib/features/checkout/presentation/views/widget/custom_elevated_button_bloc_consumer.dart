@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:payment_app/features/checkout/data/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:payment_app/features/checkout/presentation/manager/payment_cubit/payment_cubit.dart';
 import 'package:payment_app/features/checkout/presentation/manager/payment_cubit/payment_state.dart';
 import 'package:payment_app/features/checkout/presentation/views/thank_you_view.dart';
@@ -17,7 +18,7 @@ class CustomElevatedButtomBlocConsumer extends StatelessWidget {
         if (state is PaymentSuccessState) {
           Navigator.pushReplacement(context, MaterialPageRoute(
             builder: (context) {
-              return ThankYouView();
+              return const ThankYouView();
             },
           ));
         }
@@ -30,6 +31,13 @@ class CustomElevatedButtomBlocConsumer extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomElevatedButton(
+          onTap: () {
+            BlocProvider.of<PaymentCubit>(context).makePayment(
+                paymentIntentInputModel: PaymentIntentInputModel(
+              amount: '100',
+              currency: 'USD',
+            ));
+          },
           isLoading: state is PaymentLoadingState ? true : false,
           label: 'Continue',
         );
