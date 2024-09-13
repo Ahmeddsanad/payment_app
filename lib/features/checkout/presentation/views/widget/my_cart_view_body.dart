@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment_app/core/utils/app_icons.dart';
 import 'package:payment_app/core/utils/app_images.dart';
+import 'package:payment_app/features/checkout/data/repos/checkout_repo_implementation.dart';
+import 'package:payment_app/features/checkout/presentation/manager/payment_cubit/payment_cubit.dart';
 import 'package:payment_app/features/checkout/presentation/views/payment_details_view.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/custom_elevated_button.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/order_info_item.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/payment_methods_List_view.dart';
+import 'package:payment_app/features/checkout/presentation/views/widget/payment_methods_bottom_sheet.dart';
 import 'package:payment_app/features/checkout/presentation/views/widget/total_price_widget.dart';
 
 class MyCartViewBody extends StatelessWidget {
@@ -88,7 +92,11 @@ class MyCartViewBody extends StatelessWidget {
                       16,
                     )),
                     builder: (context) {
-                      return PaymentMethodsBottomSheet();
+                      return BlocProvider(
+                        create: (context) =>
+                            PaymentCubit(CheckoutRepoImplementation()),
+                        child: PaymentMethodsBottomSheet(),
+                      );
                     },
                   );
                 },
@@ -98,37 +106,6 @@ class MyCartViewBody extends StatelessWidget {
                 height: 20,
               ),
             ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class PaymentMethodsBottomSheet extends StatelessWidget {
-  const PaymentMethodsBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 16,
-          ),
-          PaymentMethodsListView(
-            paymentMethodsIcon: [
-              AppIcons.creditCard,
-              AppIcons.payPal,
-            ],
-          ),
-          SizedBox(
-            height: 32,
-          ),
-          CustomElevatedButton(
-            label: 'Continue',
           )
         ],
       ),

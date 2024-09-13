@@ -6,10 +6,12 @@ class CustomElevatedButton extends StatelessWidget {
     super.key,
     required this.label,
     this.onTap,
+    this.isLoading = false,
   });
 
   final String label;
   final Function()? onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +27,12 @@ class CustomElevatedButton extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            label,
-            style: styles.style22,
-          ),
+          child: isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Text(
+                  label,
+                  style: styles.style22,
+                ),
         ),
       ),
     );
