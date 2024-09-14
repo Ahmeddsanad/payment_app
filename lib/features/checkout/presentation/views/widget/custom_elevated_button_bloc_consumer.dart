@@ -34,10 +34,12 @@ class CustomElevatedButtomBlocConsumer extends StatelessWidget {
         return CustomElevatedButton(
           onTap: () {
             BlocProvider.of<PaymentCubit>(context).makePayment(
-                paymentIntentInputModel: PaymentIntentInputModel(
-              amount: '100',
-              currency: 'USD',
-            ));
+              paymentIntentInputModel: PaymentIntentInputModel(
+                amount: '100',
+                currency: 'USD',
+                customerId: 'cus_QqVXWiyhON4Llv',
+              ),
+            );
           },
           isLoading: state is PaymentLoadingState ? true : false,
           label: 'Continue',
