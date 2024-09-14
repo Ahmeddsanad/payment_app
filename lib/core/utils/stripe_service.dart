@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment_app/core/utils/api_keys.dart';
 import 'package:payment_app/core/utils/api_service.dart';
+import 'package:payment_app/features/checkout/data/models/ephemeral_key_model/ephemeral_key_model.dart';
 import 'package:payment_app/features/checkout/data/models/payment_intent_input_model/payment_intent_input_model.dart';
 import 'package:payment_app/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 
@@ -19,6 +20,24 @@ class StripeService {
     var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
 
     return paymentIntentModel;
+  }
+
+  Future<EphemeralKeyModel> createEphemeralKey(
+      {required String customerId}) async {
+    var response = await apiService.post(
+      body: {'customer': customerId},
+      headers: {
+        'Authorization': "Bearer ${ApiKeys.secertKey}",
+        'Stripe-Version': '2024-06-20',
+      },
+      contentType: Headers.formUrlEncodedContentType,
+      url: 'https://api.stripe.com/v1/payment_intents',
+      token: ApiKeys.secertKey,
+    );
+
+    var ephemeralKey = EphemeralKeyModel.fromJson(response.data);
+
+    return ephemeralKey;
   }
 
   Future initPaymentSheet({required String paymentIntentClientSecret}) async {
