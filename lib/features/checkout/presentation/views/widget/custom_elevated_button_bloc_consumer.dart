@@ -26,6 +26,7 @@ class CustomElevatedButtomBlocConsumer extends StatelessWidget {
           SnackBar snackBar = SnackBar(
             content: Text(state.errMessage),
           );
+          Navigator.of(context).pop();
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         }
       },
